@@ -26,6 +26,8 @@ const Btn = styled.TouchableOpacity`
     border-width: 1px;
     border-radius: 20px;
     border-color: rgba(255, 255, 255, 0.5);
+    justify-content: center;
+    align-items: center;
 `
 const BtnText = styled.Text`
     color: white;
