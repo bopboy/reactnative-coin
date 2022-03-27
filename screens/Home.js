@@ -4,8 +4,8 @@ import styled from 'styled-components/native'
 import { BLACK_COLOR } from "../colors";
 import auth from '@react-native-firebase/auth'
 import { coins } from '../api';
-import { ActivityIndicator } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { ActivityIndicator, View } from 'react-native';
+import Coin from "../components/Coin";
 
 const Container = styled.View`
   background-color: ${BLACK_COLOR};
@@ -27,21 +27,17 @@ const BtnText = styled.Text`
     color: white;
     font-size: 16px;
 `
+const List = styled.FlatList`
+    padding: 20px 10px;
+    width: 100%;
+`
 const Loader = styled.View`
     flex: 1;
     background-color: ${BLACK_COLOR};
     justify-content: center;
     align-items: center;
 `
-const Coin = styled.View`
-    align-items: center;
-`
-const CoinName = styled.Text`
-    color: white;
-`
-const CoinSymbol = styled.Text`
-    color: white;
-`
+
 const onSubmitEditing = async () => {
     await auth().signOut()
 }
@@ -57,15 +53,16 @@ const Home = () => {
     }
     return (
         <Container>
-            <FlatList
+            <List
                 data={cleanData}
-                numColumns={5}
+                numColumns={3}
                 keyExtractor={item => item.id}
-                renderItem={({ item }) => (
-                    <Coin>
-                        <CoinName>{item.name}</CoinName>
-                        <CoinSymbol>{item.symbol}</CoinSymbol>
-                    </Coin>
+                ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+                columnWrapperStyle={{
+                    justifyContent: "space-between",
+                }}
+                renderItem={({ item, index }) => (
+                    <Coin index={index} symbol={item.symbol} />
                 )}
             />
             <Btn onPress={onSubmitEditing}>
