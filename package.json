@@ -24,6 +24,7 @@
     "react-native-screens": "~3.4.0",
     "react-native-unimodules": "0.14.10",
     "react-native-web": "~0.13.12",
+    "react-query": "^3.34.18",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
