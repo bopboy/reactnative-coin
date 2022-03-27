@@ -62,7 +62,7 @@ const Home = () => {
                     justifyContent: "space-between",
                 }}
                 renderItem={({ item, index }) => (
-                    <Coin index={index} symbol={item.symbol} />
+                    <Coin index={index} id={item.id} symbol={item.symbol} />
                 )}
             />
             <Btn onPress={onSubmitEditing}>
